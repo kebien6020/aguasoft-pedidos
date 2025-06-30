@@ -1,18 +1,20 @@
 {
   "scripts": {
-    "build": "cp src/index.html dist/index.html && esbuild src/main.jsx --bundle --outfile=dist/main.js --jsx=automatic",
-    "watch": "npm run build -- --watch"
+    "copy-assets": "cp -r public/* dist/",
+    "build": "npm run copy-assets && esbuild src/main.jsx --bundle --outfile=dist/main.js --jsx=automatic --minify --sourcemap --target=chrome107,edge107,firefox104,safari16",
+    "dev": "npm run copy-assets && esbuild src/main.jsx --bundle --outfile=dist/main.js --jsx=automatic --servedir=dist --serve-fallback=dist/index.html"
   },
   "devDependencies": {
-    "esbuild": "^0.25.1"
+    "esbuild": "^0.25.5"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.0",
-    "@fontsource/roboto": "^5.2.5",
+    "@emotion/styled": "^11.14.1",
+    "@fontsource/roboto": "^5.2.6",
     "@mui/icons-material": "^6.4.8",
     "@mui/material": "^6.4.8",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router": "^7.6.3"
   }
 }
